@@ -1,0 +1,95 @@
+<div id="content">
+
+        <!-- <dx-button class="filterButton"  text="filter Button" (onClick)="filterCancel()"></dx-button> -->
+
+    <dx-data-grid
+    #myDataGrid
+    [dataSource]="gridUsers"
+    [showBorders]="true"
+    [repaintChangesOnly]="true"
+    (onToolbarPreparing)="appendToolbar($event)"
+    >
+
+    <dxo-filter-row [visible]="true" applyFilter="onClick"></dxo-filter-row>
+
+    <!-- <dxo-header-filter [visible]="true" [allowSearch]="false"></dxo-header-filter> -->
+    <dxo-selection 
+     [selectAllMode]='allPages'
+     [showCheckBoxesMode]="checkBoxesMode"></dxo-selection>
+    <dxo-search-panel [visible]="true"  ></dxo-search-panel>
+    <dxo-paging [pageSize]="10"></dxo-paging>
+    <!-- --------------------------------------
+        
+        ---------------------- -->
+    <dxo-editing 
+    mode="popup"
+    [allowUpdating]="true"
+    [allowDeleting]="true">
+    <dxo-popup
+        title="Employee Info"
+        [showTitle]="true"
+        [width]="700"
+        [height]="525"
+        [position]="{ my: 'center', at: 'center', of: window }"></dxo-popup>
+
+    <dxo-form>
+        <dxi-item itemType="group" [colCount]="1" [colSpan]="2">
+            <dxi-item dataField="CompanyName"></dxi-item>
+            <dxi-item dataField="Address"></dxi-item>
+            <dxi-item dataField="City"></dxi-item>
+            <dxi-item dataField="State"></dxi-item>
+            <dxi-item dataField="Zipcode"></dxi-item>
+            <dxi-item dataField="Phone"></dxi-item>
+            <dxi-item dataField="Website"></dxi-item>
+            <dxi-item dataField="Fax"></dxi-item>
+        </dxi-item>
+        
+        <!-- <dxi-item itemType="group" caption="Home Address" [colCount]="2" [colSpan]="2">
+            <dxi-item dataField="StateID"></dxi-item>
+            <dxi-item dataField="Address"></dxi-item>
+        </dxi-item> -->
+
+    </dxo-form>
+</dxo-editing>
+<!-- ------------------------------------------------------------- -->
+    <!-- <dxo-editing 
+         mode="row"
+         [selectTextOnEditStart]="true"
+         [allowUpdating]="true"
+         [allowDeleting]="true"
+         [allowAdding]="true">
+    </dxo-editing> -->
+    <dxo-header-filter [visible]="true" [allowSearch]="true"></dxo-header-filter>
+    <dxo-pager 
+        [showPageSizeSelector]="true"
+        [allowedPageSizes]="[5, 10, 15]"
+        [showInfo]="true">
+    </dxo-pager>
+    <dxo-export [enabled]="true" fileName="mySales"></dxo-export>
+    </dx-data-grid>
+    <br>
+<div class="buttons" >
+<dx-button text="open Modal"  (onClick)="buttonClick()" [useSubmitBehavior]="true">
+</dx-button>
+<br>
+
+<dx-button text="view Charts" (onClick)="navigateCharts()" ></dx-button>
+
+</div>
+
+<dx-popup  #regForm
+class="popup"
+[closeOnOutsideClick]="true"
+[(visible)]="popupVisible"
+[showTitle]="'true'"
+height="500"
+width="600"
+title="Registration Form"
+[toolbarItems]= "[{toolbar: 'bottom', location:'after', widget: 'dxButton',options:{ 
+     text:'Save', onClick: saveAddSplitFormDetails}},{toolbar: 'bottom', location:'after', widget: 'dxButton',options:{
+    text:'Cancel', onClick: addSplitFormCancel}}]">
+<div class="modalBody">
+        <dx-form  #lgnForm  [items]="loginForm" [(formData)]="registrationForm"></dx-form>
+</div>
+</dx-popup>
+</div> 
