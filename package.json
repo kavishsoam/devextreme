@@ -21,7 +21,7 @@
     "@angular/router": "~8.1.0",
     "devextreme": "19.1.4",
     "devextreme-angular": "^19.1.4",
-    "latest-version": "^5.1.0",
+    "latest-version": "^7.0.0",
     "readable-stream": "^3.4.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
